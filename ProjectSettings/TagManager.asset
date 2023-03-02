@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Environment
+    uniqueID: 4056145851
+    locked: 0
+  - name: Gameplay
+    uniqueID: 3844041949
+    locked: 0
