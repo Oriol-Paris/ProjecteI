@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
@@ -42,6 +42,6 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Time.deltatime es el tiempo que ha pasado entre frames, al ser un numero muy pequeño hay que aumentar la variable movementSpeed
-        rb.velocity = velocity * Time.deltaTime;
+        rb.velocity = velocity;
     }
 }
