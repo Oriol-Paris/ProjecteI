@@ -42,6 +42,6 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         //Time.deltatime es el tiempo que ha pasado entre frames, al ser un numero muy pequeño hay que aumentar la variable movementSpeed
-        rb.velocity = velocity;
+        rb.velocity = velocity * Time.deltaTime;
     }
 }
