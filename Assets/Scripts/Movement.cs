@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float movementSpeed = 1000f;
+    public float movementSpeed = 10f;
     public Vector2 direction;
     public Vector2 velocity;
 
@@ -42,6 +42,6 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         //Time.deltatime es el tiempo que ha pasado entre frames, al ser un numero muy pequeño hay que aumentar la variable movementSpeed
-        rb.velocity = velocity * Time.deltaTime;
+        rb.velocity = velocity;
     }
 }
