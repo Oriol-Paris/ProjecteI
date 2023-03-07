@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public float movementSpeed = 10f;
+    public float movementSpeed = 1f;
     public Vector2 direction;
     public Vector2 velocity;
 
