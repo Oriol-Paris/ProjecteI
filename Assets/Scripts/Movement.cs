@@ -9,10 +9,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+Vector2 groundCheckPosition = transform.position + (Vector2.up * -1);
+float groundCheckRadius = 0.5f;
+Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
+*/
 public class Movement : MonoBehaviour
 {
-    Rigidbody2D rb;
+
+
+Rigidbody2D rb;
 
     public float movementSpeed = 10f;
     public Vector2 direction;
@@ -44,4 +50,6 @@ public class Movement : MonoBehaviour
         //Time.deltatime es el tiempo que ha pasado entre frames, al ser un numero muy pequeño hay que aumentar la variable movementSpeed
         rb.velocity = velocity;
     }
+  
+
 }
