@@ -14,11 +14,23 @@ Vector2 groundCheckPosition = transform.position + (Vector2.up * -1);
 float groundCheckRadius = 0.5f;
 Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
 */
+
+void OnDrawGizmos()
+{
+    Gizmos.color = Color.green;
+    Vector2 groundCheckPosition = Transform.position + (Vector2.up * -1);
+    float groundCheckRadius = 0.5f;
+    Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
+}
+
+Physics2D.CircleCast();
+
 public class Movement : MonoBehaviour
 {
+    
 
 
-Rigidbody2D rb;
+    Rigidbody2D rb;
 
     public float movementSpeed = 10f;
     public Vector2 direction;
