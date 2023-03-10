@@ -15,15 +15,9 @@ float groundCheckRadius = 0.5f;
 Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
 */
 
-void OnDrawGizmos()
-{
-    Gizmos.color = Color.green;
-    Vector2 groundCheckPosition = Transform.position + (Vector2.up * -1);
-    float groundCheckRadius = 0.5f;
-    Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
-}
 
-Physics2D.CircleCast();
+
+
 
 public class Movement : MonoBehaviour
 {
@@ -35,6 +29,7 @@ public class Movement : MonoBehaviour
     public float movementSpeed = 10f;
     public Vector2 direction;
     public Vector2 velocity;
+    public LayerMask floorMask;
 
     void Start()
     {
@@ -59,9 +54,15 @@ public class Movement : MonoBehaviour
     //Se va a encargar de mover el player
     void FixedUpdate()
     {
+        Physics2D.CircleCast(transform.position, 0.5f, direction, 1f, floorMask);
         //Time.deltatime es el tiempo que ha pasado entre frames, al ser un numero muy pequeño hay que aumentar la variable movementSpeed
         rb.velocity = velocity;
     }
-  
+    void OnDrawGizmos()
+    {
+
+
+    }
+
 
 }
