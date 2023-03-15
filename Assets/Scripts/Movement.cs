@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 /*
 Vector2 groundCheckPosition = transform.position + (Vector2.up * -1);
 float groundCheckRadius = 0.5f;
@@ -22,8 +23,6 @@ Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
 public class Movement : MonoBehaviour
 {
     
-
-
     Rigidbody2D rb;
 
     public float movementSpeed = 10f;
@@ -31,9 +30,13 @@ public class Movement : MonoBehaviour
     public Vector2 velocity;
     public LayerMask floorMask;
 
+    Animator _animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        _animator = GetComponentInChildren<Animator>();
     }
 
     //Se va a encaragr de leer los inputs y calcular la velocidad
@@ -49,6 +52,7 @@ public class Movement : MonoBehaviour
         //Haze que la velocidad este en un rango de -1 a 1
         direction.Normalize();
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+        _animator.SetFloat("speed", velocity[0]);
     }
 
     //Se va a encargar de mover el player
