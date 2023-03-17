@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         _animator.SetFloat("speed", velocity[0]);
+        _animator.SetFloat("jump", direction.y * movementSpeed);
 
         if (isGrounded && Input.GetAxisRaw("Vertical") > 0) 
         {
