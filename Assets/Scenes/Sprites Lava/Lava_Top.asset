@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Lava_Top
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 84823612, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: 1050244548, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: 1378950570, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: -1441530775, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: 856890318, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: -1543480462, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: -1751503096, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  - {fileID: -1585325842, guid: 7c50ea6e719f7e64783a7b413d1f9f72, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
