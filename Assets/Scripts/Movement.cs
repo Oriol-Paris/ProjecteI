@@ -46,17 +46,17 @@ public class Movement : MonoBehaviour
             velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
         }
 
-        groundCheckPosition = new Vector2(transform.position.x, transform.position.y) + (Vector2.up * (-1/2));
+        groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
     }
 
     //Se va a encargar de mover el player
     void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(groundCheckPosition, 0.5f, direction, 1f, floorMask);
+        Collider2D collider = Physics2D.OverlapCircle(groundCheckPosition, groundCheckRadius, floorMask);
 
-        if (hit)
+        if (collider)
         {
-            hitObject = hit.collider.gameObject;
+            hitObject = collider.gameObject;
         }
         else
         {
@@ -76,7 +76,8 @@ public class Movement : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(groundCheckPosition, groundCheckRadius);
     }
 
 
