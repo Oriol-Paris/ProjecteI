@@ -8,10 +8,6 @@ float groundCheckRadius = 0.5f;
 Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
 */
 
-
-
-
-
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -22,6 +18,8 @@ public class Movement : MonoBehaviour
     public LayerMask floorMask;
     public bool isGrounded;
     public GameObject hitObject;
+    public Vector2 groundCheckPosition;
+    public float groundCheckRadius = 0.05f;
 
     Animator _animator;
 
@@ -35,14 +33,8 @@ public class Movement : MonoBehaviour
     //Se va a encaragr de leer los inputs y calcular la velocidad
     void Update()
     {
-        //axis.Y es 0 porque no se modifica la velocidad vertical a excepcion del salto.
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        /*Tambien se puede hacer asi.
-         * axis.x = Input.GetAxisRaw("Horizontal");
-         * axis.y = Input.GetAxisRaw("Vertical");
-         */
 
-        //Haze que la velocidad este en un rango de -1 a 1
         direction.Normalize();
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
@@ -53,12 +45,14 @@ public class Movement : MonoBehaviour
         {
             velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
         }
+
+        groundCheckPosition = new Vector2(transform.position.x, transform.position.y) + (Vector2.up * (-1/2));
     }
 
     //Se va a encargar de mover el player
     void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, direction, 1f, floorMask);
+        RaycastHit2D hit = Physics2D.CircleCast(groundCheckPosition, 0.5f, direction, 1f, floorMask);
 
         if (hit)
         {
@@ -82,8 +76,6 @@ public class Movement : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        Vector2 groundCheckPosition = new Vector2(transform.position.x, transform.position.y) + (Vector2.up * -1);
-        float groundCheckRadius = 0.5f;
         Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
     }
 
