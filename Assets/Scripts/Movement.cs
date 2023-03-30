@@ -73,6 +73,7 @@ public class Movement : MonoBehaviour
 
         rb.velocity = velocity;
 
+
     }
     void OnDrawGizmos()
     {
