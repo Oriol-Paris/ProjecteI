@@ -11,7 +11,6 @@ public class HookScript : MonoBehaviour
     public float swingForce; // Fuerza de oscilación del gancho
     public float gravityScale; // Escala de la gravedad del personaje mientras está enganchado
     public LayerMask hookableLayerMask; // Máscara de capa de objetos a los que se puede enganchar el gancho
-    public Transform playerTransform;
 
     private bool hooked; // Indica si el gancho está enganchado
     private bool retracting; // Indica si el gancho está retractándose
@@ -31,7 +30,7 @@ public class HookScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (!hooked)
             {
