@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HookScript : MonoBehaviour
+public class OriolHook : MonoBehaviour
 {
     public Transform hookTarget; // Objeto al que el gancho se enganchará
     public float hookSpeed; // Velocidad del gancho
