@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        
+        direction.Normalize(); //si esta esto desactivado saltará lo mismo en movimiento que parado
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         if (isGrounded && Input.GetButton("Jump"))
