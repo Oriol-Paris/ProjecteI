@@ -71,6 +71,7 @@ public class Movement : MonoBehaviour
             isGrounded = false;
         }
 
+        if (Input.GetAxis("Horizontal") > 0.1f || Input.GetAxis("Horizontal") < -0.1f)
         rb.velocity = velocity;
 
 
