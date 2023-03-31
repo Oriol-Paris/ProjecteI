@@ -2057,6 +2057,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: maxDistnace
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: hasMaxDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003851, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -2521,6 +2529,31 @@ MonoBehaviour:
     m_RotationOrder: 4
   ropeProgressionSpeed: 1
   isGrappling: 1
+--- !u!1 &1551278174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6179948538331003851, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+  m_PrefabInstance: {fileID: 680697433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1551278181
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551278174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 698e13b8d3df16e4982c8ded76864abb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1901039564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,7 +2716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1999098229
 Transform:
   m_ObjectHideFlags: 0
