@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
         
-
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         if (isGrounded && Input.GetButton("Jump"))
