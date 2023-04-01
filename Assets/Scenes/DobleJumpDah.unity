@@ -1006,3 +1006,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+--- !u!1001 &7091195329524636733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102137, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091195328221102140, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
+      propertyPath: m_Name
+      value: BolaDeFuego
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1429f13d40896cc4fab6ef5aa8275bff, type: 3}
