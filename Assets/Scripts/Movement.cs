@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-/*
-Vector2 groundCheckPosition = transform.position + (Vector2.up * -1);
-float groundCheckRadius = 0.5f;
-Gizmos.DrawWireSphere(groundCheckPosition, groundCheckRadius);
-*/
 
 public class Movement : MonoBehaviour
 {
@@ -20,6 +15,7 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+    public BlackOut blackOut;
 
     Animator _animator;
 
@@ -28,6 +24,8 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         _animator = GetComponentInChildren<Animator>();
+
+        //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
 
     //Se va a encaragr de leer los inputs y calcular la velocidad
@@ -81,5 +79,8 @@ public class Movement : MonoBehaviour
         Gizmos.DrawSphere(groundCheckPosition, groundCheckRadius);
     }
 
-
+    public void TeleportToStart()
+    {
+        transform.position = new Vector2(-6f, -3.5f);
+    }
 }
