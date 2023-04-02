@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
+    public float jumpSpeed = -1f;
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
@@ -33,16 +34,20 @@ public class Movement : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        direction.Normalize();
+        if (!Input.GetButton("Jump"))
+        {
+            direction.Normalize();
+        }
+
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+        }
 
         _animator.SetFloat("speed", velocity[0]);
         _animator.SetFloat("jump", direction.y * movementSpeed);
-
-        if (isGrounded && Input.GetAxisRaw("Vertical") > 0) 
-        {
-            velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
-        }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
     }
