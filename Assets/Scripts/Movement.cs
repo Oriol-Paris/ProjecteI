@@ -20,6 +20,9 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+    bool hasJumped = false;
+    int jumpCount = 2;
+    public int currentJump = 0;
 
     Animator _animator;
 
@@ -40,13 +43,23 @@ public class Movement : MonoBehaviour
 
         _animator.SetFloat("speed", velocity[0]);
         _animator.SetFloat("jump", direction.y * movementSpeed);
-
-        if (isGrounded && Input.GetAxisRaw("Vertical") > 0) 
+       
+        if (!isGrounded && currentJump < jumpCount && Input.GetKeyDown(KeyCode.W) && hasJumped)
+        {
+            //velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+            rb.AddForce(new Vector2(direction.x * movementSpeed, direction.y * movementSpeed), ForceMode2D.Impulse);
+            hasJumped = true;
+            currentJump++;
+        }
+        else if (isGrounded && Input.GetAxisRaw("Vertical") > 0 && !hasJumped) 
         {
             velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+            hasJumped = true;
+            currentJump++;
+            
         }
 
-        groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+        groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.3f);
     }
 
     //Se va a encargar de mover el player
@@ -65,13 +78,15 @@ public class Movement : MonoBehaviour
         if (hitObject != null)
         {
             isGrounded = true;
+            hasJumped = false;
+            currentJump = 0;
         }
         else
         {
             isGrounded = false;
         }
 
-        if (Input.GetAxis("Horizontal") > 0.1f || Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Vertical") > 0.1f)
+        //if (Input.GetAxis("Horizontal") > 0.1f || Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Vertical") > 0.1f)
             rb.velocity = velocity;
 
 
