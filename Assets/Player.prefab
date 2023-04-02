@@ -404,7 +404,7 @@ MonoBehaviour:
   gunHolder: {fileID: 6179948538331003854}
   gunPivot: {fileID: 6179948537117231551}
   firePoint: {fileID: 6179948536875943563}
-  m_springJoint2D: {fileID: 6179948538331003849}
+  m_springJoint2D: {fileID: 0}
   m_rigidbody: {fileID: 6179948538331003848}
   rotateOverTime: 1
   rotationSpeed: 18.2
@@ -429,12 +429,9 @@ GameObject:
   - component: {fileID: 6179948538331003854}
   - component: {fileID: 6179948538331003855}
   - component: {fileID: 6179948538331003848}
-  - component: {fileID: 6179948538331003849}
   - component: {fileID: 6179948538331003850}
   - component: {fileID: 6179948538331003853}
   - component: {fileID: 1857235159104039347}
-  - component: {fileID: 204165078634008432}
-  - component: {fileID: 6707682853621313918}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -531,26 +528,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!231 &6179948538331003849
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179948538331003851}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 1
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 2.6704712
-  m_DampingRatio: 1
-  m_Frequency: 1
 --- !u!58 &6179948538331003850
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -609,53 +586,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &204165078634008432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179948538331003851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Library:
-  - m_Name: New Category
-    m_Hash: 0
-    m_CategoryList:
-    - m_Name: Entry
-      m_Hash: 0
-      m_Sprite: {fileID: 1713342318, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-    - m_Name: Entry_0
-      m_Hash: 0
-      m_Sprite: {fileID: -1424327511, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-    - m_Name: Entry_1
-      m_Hash: 0
-      m_Sprite: {fileID: -744850542, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-    - m_Name: Entry_2
-      m_Hash: 0
-      m_Sprite: {fileID: 1770055039, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-    - m_Name: Entry_3
-      m_Hash: 0
-      m_Sprite: {fileID: -972663338, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-    - m_Name: Entry_4
-      m_Hash: 0
-      m_Sprite: {fileID: 486946694, guid: eb78566660a0a26468205a51cdc67169, type: 3}
-  m_SpriteLibraryAsset: {fileID: 0}
---- !u!111 &6707682853621313918
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179948538331003851}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
