@@ -1,5 +1,6 @@
 # ProjecteI
 
+GitKraken
 Shiro, ShiroJr & Èric = Èric Maestre
 Oriol-Paris = Oriol París
 Aleix Martínez = Aleix Martínez
