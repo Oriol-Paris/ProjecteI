@@ -229,13 +229,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 301156905}
     - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: maxDistnace
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: grappleToAll
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: hasMaxDistance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: targetDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_springJoint2D
       value: 
       objectReference: {fileID: 840004249}
+    - target: {fileID: 6179948537998626302, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: grappableLayerNumber
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003848, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_GravityScale
       value: 1.5
