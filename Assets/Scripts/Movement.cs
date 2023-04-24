@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
-    public float jumpSpeed = -1f;
+    private float jumpSpeed = 2f;
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+
 
     Animator _animator;
 
@@ -37,40 +38,34 @@ public class Movement : MonoBehaviour
     //Se va a encaragr de leer los inputs y calcular la velocidad
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        if (!Input.GetButton("Vertical"))
-        {
-            direction.Normalize();
-        }
 
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         //if (isGrounded && Input.GetButtonDown("Vertical"))
         //{
         //    velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
-        //}
-
-        if (isGrounded && Input.GetAxisRaw("Vertical") > 0 && !hasJumped)
+        
+       if (isGrounded && Input.GetAxisRaw("Vertical") > 0f && !hasJumped) 
         {
-            velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+            //velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
+            rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             hasJumped = true;
             currentJump++;
-
+            
         }
 
         if (!isGrounded && currentJump < jumpCount && Input.GetKeyDown(KeyCode.W) && hasJumped)
         {
             //velocity = new Vector2(direction.x * movementSpeed, direction.y * movementSpeed);
-            rb.AddForce(new Vector2(direction.x * movementSpeed, direction.y * movementSpeed), ForceMode2D.Impulse);
+            //rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.AddForce(new Vector2(0, jumpSpeed * 1.5f), ForceMode2D.Impulse);
+            //rb.AddForce(new Vector2(direction.x * movementSpeed, direction.y * movementSpeed), ForceMode2D.Impulse);
             hasJumped = true;
             currentJump++;
         }
         
-
-        _animator.SetFloat("speed", velocity[0]);
-        //_animator.SetFloat("jump", direction.y * movementSpeed);
-
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
     }
 
@@ -98,7 +93,7 @@ public class Movement : MonoBehaviour
             isGrounded = false;
         }
 
-        if (Input.GetAxis("Horizontal") > 0.1f || Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Vertical") > 0.1f)
+        //if (Input.GetAxis("Horizontal") > 0.1f || Input.GetAxis("Horizontal") < -0.1f || Input.GetAxis("Vertical") > 0.1f)
             rb.velocity = velocity;
 
 
