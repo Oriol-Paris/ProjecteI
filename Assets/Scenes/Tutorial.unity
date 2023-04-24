@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: m_springJoint2D
       value: 
       objectReference: {fileID: 840004249}
+    - target: {fileID: 6179948538331003848, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: m_GravityScale
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003850, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_Radius
       value: 0.69415784
