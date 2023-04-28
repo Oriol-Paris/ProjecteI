@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
-    private float jumpSpeed = 2f;
+    private float jumpSpeed = 8f;
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
