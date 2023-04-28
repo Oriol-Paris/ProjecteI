@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
-    public float jumpSpeed = -1f;
+    private float jumpSpeed = 2f;
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+
 
     Animator _animator;
 
@@ -31,7 +32,7 @@ public class Movement : MonoBehaviour
     //Se va a encaragr de leer los inputs y calcular la velocidad
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
         
 

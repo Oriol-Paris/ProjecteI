@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7091195328221102137}
   - component: {fileID: 7091195328221102142}
   - component: {fileID: 7091195328221102143}
-  - component: {fileID: 7091195328221102136}
   - component: {fileID: 7091195328221102139}
   m_Layer: 0
   m_Name: BolaDeFuego
@@ -113,18 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8461238, y: 0.7911681}
   m_EdgeRadius: 0
---- !u!114 &7091195328221102136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091195328221102140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 983b6e9bab7e6034c829ffe167ebe226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &7091195328221102139
 Rigidbody2D:
   serializedVersion: 4
