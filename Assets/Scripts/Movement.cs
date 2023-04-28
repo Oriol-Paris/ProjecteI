@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
+
+    
 
     public float movementSpeed = -1f;
     private float jumpSpeed = 8f;
@@ -32,20 +35,22 @@ public class Movement : MonoBehaviour
     //Se va a encaragr de leer los inputs y calcular la velocidad
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        
+            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        direction.Normalize(); //si esta esto desactivado saltará lo mismo en movimiento que parado
-        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+            //direction.Normalize(); //si esta esto desactivado saltará lo mismo en movimiento que parado
+            velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
-        if (isGrounded && Input.GetButton("Jump"))
-        {
-            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
-        }
+            if (isGrounded && Input.GetButton("Jump"))
+            {
+                velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+            }
 
-        _animator.SetFloat("speed", velocity[0]);
-        _animator.SetFloat("jump", direction.y * movementSpeed);
+            _animator.SetFloat("speed", velocity[0]);
+            _animator.SetFloat("jump", direction.y * movementSpeed);
 
-        groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+            groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+        
     }
 
     //Se va a encargar de mover el player
