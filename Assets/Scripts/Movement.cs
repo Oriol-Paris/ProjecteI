@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+    public SpriteRenderer myRenderer;
 
 
     Animator _animator;
@@ -28,6 +29,8 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         _animator = GetComponentInChildren<Animator>();
+
+        myRenderer = GetComponent<SpriteRenderer>();
 
         //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
@@ -46,8 +49,13 @@ public class Movement : MonoBehaviour
                 velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
             }
 
-            _animator.SetFloat("speed", velocity[0]);
+            _animator.SetFloat("speed", Mathf.Abs(velocity[0]));
             _animator.SetFloat("jump", direction.y * movementSpeed);
+
+            if (velocity[0] < -0.01f)
+                myRenderer.flipX = true;
+            else if (velocity[0] > 0.01f)
+                myRenderer.flipX = false;
 
             groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
         
