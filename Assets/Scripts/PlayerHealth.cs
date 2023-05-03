@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class PlayerHealth : MonoBehaviour
     public Movement movement;
     private bool isInvincible = false;
     public float invincibilitySeconds = 1f;
+    public Animator myAnimator;
+    private int dmgAmount;
     //public BlackOut blackOut;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
+        myAnimator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amount)
@@ -26,10 +30,15 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health -= amount;
+        myAnimator.SetBool("DamageTaken", true);
+
         if (health <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("Main Menu");
         }
+
+        dmgAmount = amount;
 
         StartCoroutine(InvincibilityOnHit());
     }
@@ -39,9 +48,13 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player Turned Invincible!");
         isInvincible = true;
 
+        if (dmgAmount == 2)
+            movement.TeleportToStart();
+
         yield return new WaitForSeconds(invincibilitySeconds);
 
         isInvincible = false;
         Debug.Log("Player is no longer invincible!");
+        myAnimator.SetBool("DamageTaken", false);
     }
 }

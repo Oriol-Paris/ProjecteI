@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
     public float fallMultiplier = 3f;
     public float normalMultiplier = 2f;
     public SpriteRenderer myRenderer;
+    private bool checkpointReached = false;
 
     Animator _animator;
 
@@ -29,7 +31,6 @@ public class Movement : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         myRenderer = GetComponent<SpriteRenderer>();
-
         //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
 
@@ -55,7 +56,9 @@ public class Movement : MonoBehaviour
             velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
         }
 
-        _animator.SetFloat("speed", Mathf.Abs(velocity.x));
+        _animator.SetFloat("speedX", Mathf.Abs(velocity.x));
+        _animator.SetFloat("speedY", rb.velocity.y);
+        _animator.SetBool("isJumping", !isGrounded);
 
         //_animator.setfloat("jump", direction.y * movementSpeed);
 
@@ -96,6 +99,10 @@ public class Movement : MonoBehaviour
 
         rb.velocity = velocity;
 
+        if (rb.position.x > 50f)
+        {
+            checkpointReached = true;
+        }
 
     }
     void OnDrawGizmos()
@@ -106,6 +113,13 @@ public class Movement : MonoBehaviour
 
     public void TeleportToStart()
     {
-        transform.position = new Vector2(-6f, -3.5f);
+        if (checkpointReached == false)
+        {
+            transform.position = new Vector2(-6f, -3.5f);
+        }
+        else
+        {
+            transform.position = new Vector2(90f, 50f);
+        }
     }
 }
