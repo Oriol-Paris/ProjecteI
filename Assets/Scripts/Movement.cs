@@ -8,7 +8,11 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
+<<<<<<< Updated upstream
     public float jumpSpeed = -1f;
+=======
+    public float jumpSpeed = 8f;
+>>>>>>> Stashed changes
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
@@ -16,7 +20,14 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
+<<<<<<< Updated upstream
     public BlackOut blackOut;
+=======
+    public float fallMultiplier = 3f;
+    public float normalMultiplier = 2f;
+    public SpriteRenderer myRenderer;
+
+>>>>>>> Stashed changes
 
     Animator _animator;
 
@@ -26,6 +37,8 @@ public class Movement : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
 
+        myRenderer = GetComponent<SpriteRenderer>();
+
         //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
 
@@ -34,6 +47,7 @@ public class Movement : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+<<<<<<< Updated upstream
         if (!Input.GetButton("Jump"))
         {
             direction.Normalize();
@@ -42,14 +56,44 @@ public class Movement : MonoBehaviour
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         if (isGrounded && Input.GetButtonDown("Jump"))
+=======
+        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+        if (velocity[1] < 0)
         {
+            rb.gravityScale = fallMultiplier;
+        }
+
+        else
+        {
+            rb.gravityScale = normalMultiplier;
+        }
+
+        if (isGrounded && Input.GetButton("Jump"))
+>>>>>>> Stashed changes
+        {
+
             velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
         }
 
-        _animator.SetFloat("speed", velocity[0]);
-        _animator.SetFloat("jump", direction.y * movementSpeed);
+        _animator.SetFloat("speed", Mathf.Abs(velocity.x));
+        
+        //_animator.setfloat("jump", direction.y * movementSpeed);
+
+        if (rb.velocity.x < 0)
+        {
+            myRenderer.flipX = true;
+        }
+        else if (rb.velocity.x > 0)
+        {
+            myRenderer.flipX = false;
+        }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+
+
+
+
     }
 
     //Se va a encargar de mover el player
