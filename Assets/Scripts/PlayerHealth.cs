@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int maxHealth = 10;
     public Movement movement;
+    private bool isInvincible = false;
+    public float invincibilitySeconds = 1f;
     //public BlackOut blackOut;
 
     // Start is called before the first frame update
@@ -18,21 +20,28 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
-
-        if (amount > 1)
+        if (isInvincible)
         {
-            movement.TeleportToStart();
-
-            //blackOut.FadeIn();
-            //blackOut.FadeOut();
+            return;
         }
 
+        health -= amount;
         if (health <= 0)
         {
             Destroy(gameObject);
         }
+
+        StartCoroutine(InvincibilityOnHit());
     }
 
-    //Implementar tiempo de invulneravilidad (pre-alpha)
+    private IEnumerator InvincibilityOnHit()
+    {
+        Debug.Log("Player Turned Invincible!");
+        isInvincible = true;
+
+        yield return new WaitForSeconds(invincibilitySeconds);
+
+        isInvincible = false;
+        Debug.Log("Player is no longer invincible!");
+    }
 }

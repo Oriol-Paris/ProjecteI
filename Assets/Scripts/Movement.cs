@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     public float movementSpeed = -1f;
-    private float jumpSpeed = 8f;
+    public float jumpSpeed = 8f;
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
@@ -16,7 +16,9 @@ public class Movement : MonoBehaviour
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
     public float groundCheckRadius = 0.05f;
-
+    public float fallMultiplier = 3f;
+    public float normalMultiplier = 2f;
+    public SpriteRenderer myRenderer;
 
     Animator _animator;
 
@@ -26,27 +28,48 @@ public class Movement : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
 
+        myRenderer = GetComponent<SpriteRenderer>();
+
         //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
 
-    //Se va a encaragr de leer los inputs y calcular la velocidad
+    //Se va a encargar de leer los inputs y calcular la velocidad
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-
-        
-
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+        if (velocity[1] < 0)
+        {
+            rb.gravityScale = fallMultiplier;
+        }
+
+        else
+        {
+            rb.gravityScale = normalMultiplier;
+        }
 
         if (isGrounded && Input.GetButton("Jump"))
         {
+
             velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
         }
 
-        _animator.SetFloat("speed", velocity[0]);
-        _animator.SetFloat("jump", direction.y * movementSpeed);
+        _animator.SetFloat("speed", Mathf.Abs(velocity.x));
+
+        //_animator.setfloat("jump", direction.y * movementSpeed);
+
+        if (rb.velocity.x < 0)
+        {
+            myRenderer.flipX = true;
+        }
+        else if (rb.velocity.x > 0)
+        {
+            myRenderer.flipX = false;
+        }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+
     }
 
     //Se va a encargar de mover el player
@@ -62,8 +85,6 @@ public class Movement : MonoBehaviour
         {
             hitObject = null;
         }
-
-
         if (hitObject != null)
         {
             isGrounded = true;
