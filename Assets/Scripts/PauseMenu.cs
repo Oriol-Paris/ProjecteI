@@ -8,22 +8,31 @@ public class PauseMenu : MonoBehaviour
 {
 
     public Canvas myCanvas;
+    public GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         myCanvas = GetComponent<Canvas>();
 
-        myCanvas.enabled = false;
+        //myCanvas.enabled = false;
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (!pauseMenu.active && Input.GetButtonDown("Cancel"))
         {
             Debug.Log("Escape pressed");
-            myCanvas.enabled = true;
+            //myCanvas.enabled = true;
+            StartCoroutine(MenuDelay());
         }
+    }
+
+    IEnumerator MenuDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        pauseMenu.SetActive(true);
     }
 }

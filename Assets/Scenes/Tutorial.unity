@@ -217,6 +217,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6179948537280017425, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d95234b07da2b1643864189d280a247f, type: 2}
+    - target: {fileID: 6179948537280017425, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_Parameters.colorGradient.ctime0
       value: 0
       objectReference: {fileID: 0}
@@ -1730,7 +1734,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1456465529}
         m_TargetAssemblyTypeName: ExitPauseMenu, Assembly-CSharp
         m_MethodName: ExitMenu
         m_Mode: 1
@@ -9625,7 +9629,7 @@ SpringJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
   m_Distance: 102.806854
-  m_DampingRatio: 0
+  m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &879952991 stripped
 GameObject:
@@ -9708,8 +9712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -514.79987, y: 423.9001}
-  m_SizeDelta: {x: 530.22, y: 86.844}
+  m_AnchoredPosition: {x: -611.3304, y: 440.39}
+  m_SizeDelta: {x: 408.065, y: 52.018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900551491
 MonoBehaviour:
@@ -10635,7 +10639,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249095297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10645,8 +10649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -805, y: 414}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -833.2718, y: 440.39114}
+  m_SizeDelta: {x: 117.106, y: 107.469}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249095299
 MonoBehaviour:
@@ -10670,7 +10674,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 157282537, guid: b96cfad3e91f721408c7700c0fa6c3de, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11149,7 +11153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1456465524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23951,7 +23955,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 25
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -26131,7 +26135,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 25
-      m_TileSpriteIndex: 24
+      m_TileSpriteIndex: 25
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -28520,12 +28524,12 @@ Tilemap:
     m_Data: {fileID: 1528779950, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1114701183, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1723988493, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 2098666882, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 3
@@ -63317,7 +63321,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -63654,10 +63658,10 @@ Tilemap:
     m_Data: {fileID: 2053869622, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 26
     m_Data: {fileID: 410285753, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -381109310, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -381109310, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1057418741, guid: c7b92e3546dcad54f86af14aeb057ac2, type: 3}
   m_TileMatrixArray:
