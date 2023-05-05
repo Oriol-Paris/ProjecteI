@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class ExitPauseMenu : MonoBehaviour
 {
-    public Canvas myCanvas;
     public GameObject pauseMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        myCanvas = GetComponent<Canvas>();
-    }
 
     // Update is called once per frame
     public void Update()
@@ -26,7 +19,6 @@ public class ExitPauseMenu : MonoBehaviour
 
     public void ExitMenu()
     {
-        //myCanvas.enabled = false;
         pauseMenu.SetActive(false);
     }
 }

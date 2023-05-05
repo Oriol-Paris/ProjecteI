@@ -6,16 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    public Canvas myCanvas;
     public GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        myCanvas = GetComponent<Canvas>();
-
-        //myCanvas.enabled = false;
         pauseMenu.SetActive(false);
     }
 
@@ -25,7 +20,6 @@ public class PauseMenu : MonoBehaviour
         if (!pauseMenu.active && Input.GetButtonDown("Cancel"))
         {
             Debug.Log("Escape pressed");
-            //myCanvas.enabled = true;
             StartCoroutine(MenuDelay());
         }
     }

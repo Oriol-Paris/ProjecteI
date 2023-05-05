@@ -334,11 +334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003854, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90.1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003854, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.99
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6179948538331003854, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1091,7 +1091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301156903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.1, y: 49.99, z: -10}
+  m_LocalPosition: {x: -5, y: -3.5, z: -10}
   m_LocalScale: {x: 0.45000002, y: 0.45000002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8475,7 +8475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756815198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.1, y: 49.99, z: -10}
+  m_LocalPosition: {x: -5, y: -3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9620,7 +9620,7 @@ SpringJoint2D:
   m_GameObject: {fileID: 840004238}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -9628,7 +9628,7 @@ SpringJoint2D:
   m_Anchor: {x: -0.000001247724, y: -0.80000126}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 102.806854
+  m_Distance: 6.3906507
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &879952991 stripped
@@ -11153,7 +11153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1456465524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11248,7 +11248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9c6c1bd183e0349b9c85364304eaf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCanvas: {fileID: 1456465526}
   pauseMenu: {fileID: 1352956649}
 --- !u!114 &1456465529
 MonoBehaviour:
@@ -11262,7 +11261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0057d4f5d062841b69a69085cf1d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCanvas: {fileID: 1456465526}
   pauseMenu: {fileID: 1352956649}
 --- !u!1 &1601074926
 GameObject:
