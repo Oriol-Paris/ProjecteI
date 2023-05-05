@@ -99,7 +99,7 @@ public class Movement : MonoBehaviour
 
         rb.velocity = velocity;
 
-        if (rb.position.x > 50f)
+        if (rb.position.y > 50f)
         {
             checkpointReached = true;
         }
