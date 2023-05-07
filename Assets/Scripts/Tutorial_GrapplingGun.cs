@@ -91,7 +91,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         }
         else
         {
-            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos =  m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
     }
@@ -107,7 +107,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         }
         else
         {
-            gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            gunPivot.rotation =  Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
@@ -121,7 +121,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
-                    grapplePoint = _hit.point;
+                    grapplePoint =  _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
                 }
@@ -134,7 +134,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         m_springJoint2D.autoConfigureDistance = false;
         if (!launchToPoint && !autoConfigureDistance)
         {
-            m_springJoint2D.distance = targetDistance;
+            m_springJoint2D.distance =  targetDistance;
             m_springJoint2D.frequency = targetFrequncy;
         }
         if (!launchToPoint)
