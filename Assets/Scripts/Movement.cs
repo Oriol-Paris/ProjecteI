@@ -20,7 +20,10 @@ public class Movement : MonoBehaviour
     public float fallMultiplier = 3f;
     public float normalMultiplier = 2f;
     public SpriteRenderer myRenderer;
-    private bool checkpointReached = false;
+    private bool checkpoint1Reached = false;
+    private bool checkpoint2Reached = false;
+    private bool checkpoint3Reached = false;
+    private bool checkpoint4Reached = false;
 
     Animator _animator;
 
@@ -99,10 +102,24 @@ public class Movement : MonoBehaviour
 
         rb.velocity = velocity;
 
+        if (rb.position.x < 20 && rb.position.y > 9)
+        {
+            checkpoint1Reached = true;
+        }
+
+        if (rb.position.x > 70 && rb.position.y > 15)
+        {
+            checkpoint2Reached = true;
+        }
         if (rb.position.y > 50f)
         {
-            checkpointReached = true;
+            checkpoint3Reached = true;
         }
+        if (rb.position.y > 85f)
+        {
+            checkpoint4Reached = true;
+        }
+
 
     }
     void OnDrawGizmos()
@@ -113,13 +130,29 @@ public class Movement : MonoBehaviour
 
     public void TeleportToStart()
     {
-        if (checkpointReached == false)
+        if (checkpoint1Reached == false)
         {
             transform.position = new Vector2(-6f, -3.5f);
         }
-        else
+
+        else if (checkpoint1Reached == true && checkpoint2Reached == false)
+        {
+            transform.position = new Vector2(19f, 9.5f);
+        }
+        
+        else if (checkpoint2Reached == true && checkpoint3Reached == false)
+        {
+            transform.position = new Vector2(70f, 17.5f);
+        }
+
+        else if (checkpoint3Reached == true && checkpoint4Reached == false)
         {
             transform.position = new Vector2(90f, 50f);
+        }
+
+        else if (checkpoint4Reached == true)
+        {
+            transform.position = new Vector2(104.5f, 86.5f);
         }
     }
 }
