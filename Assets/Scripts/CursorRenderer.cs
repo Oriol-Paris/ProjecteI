@@ -5,23 +5,21 @@ using UnityEngine;
 public class CursorRenderer : MonoBehaviour
 {
 
+    [SerializeField] private Texture2D cursorTexture;
     [SerializeField] private Texture2D cursorTextureNormal;
-    [SerializeField] private Texture2D cursorTextureFilled;
     private Vector2 myHotspot;
 
 
     void Start()
     {
-        myHotspot = new Vector2(cursorTextureNormal.width/2, cursorTextureNormal.height/2);
+        myHotspot = new Vector2(cursorTexture.width/2, cursorTexture.height/2);
     }
-    void OnMouseDown()
+    private void OnMouseOver()
     {
-        Cursor.SetCursor(cursorTextureFilled, myHotspot, CursorMode.Auto);
+        Cursor.SetCursor(cursorTexture, myHotspot, CursorMode.Auto);
     }
-
-    private void OnMouseUp()
+    private void OnMouseExit()
     {
         Cursor.SetCursor(cursorTextureNormal, myHotspot, CursorMode.Auto);
-
     }
 }
