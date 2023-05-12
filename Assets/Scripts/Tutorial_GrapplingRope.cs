@@ -25,6 +25,11 @@ public class Tutorial_GrapplingRope : MonoBehaviour
 
     bool strightLine = true;
 
+    void Start()
+    {
+        isGrappling = false;
+    }
+
     private void OnEnable()
     {
         moveTime = 0;

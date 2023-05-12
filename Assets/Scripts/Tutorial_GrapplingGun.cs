@@ -26,8 +26,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [Range(0, 60)] [SerializeField] private float rotationSpeed = 4;
 
     [Header("Distance:")]
-    [SerializeField] private bool hasMaxDistance = false;
-    [SerializeField] private float maxDistnace = 20;
+    [SerializeField] private bool hasMaxDistance = true;
+    [SerializeField] private float maxDistnace = 4;
 
     private enum LaunchType
     {

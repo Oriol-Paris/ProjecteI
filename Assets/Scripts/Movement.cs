@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public Vector2 direction;
     public Vector2 velocity;
     public LayerMask floorMask;
+    public LayerMask hookMask;
     public bool isGrounded;
     public GameObject hitObject;
     public Vector2 groundCheckPosition;
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
     private bool checkpoint2Reached = false;
     private bool checkpoint3Reached = false;
     private bool checkpoint4Reached = false;
+    public Tutorial_GrapplingGun myGrapplingGun;
 
     Animator _animator;
 
@@ -34,6 +36,7 @@ public class Movement : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         myRenderer = GetComponent<SpriteRenderer>();
+
         //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
     }
 
@@ -41,6 +44,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
         velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
 
         if (velocity[1] < 0)
@@ -55,7 +59,6 @@ public class Movement : MonoBehaviour
 
         if (isGrounded && Input.GetButton("Jump"))
         {
-
             velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
         }
 
@@ -100,7 +103,10 @@ public class Movement : MonoBehaviour
             isGrounded = false;
         }
 
-        rb.velocity = velocity;
+        if (!myGrapplingGun.grappleRope.isGrappling)
+        {
+            rb.velocity = velocity;
+        }
 
         if (rb.position.x < 20 && rb.position.y > 9)
         {
