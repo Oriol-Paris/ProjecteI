@@ -462,6 +462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 277839578}
     - target: {fileID: 6179948538331003853, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
+      propertyPath: extraJumpsValue
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179948538331003853, guid: 6c102eb0dd8a2544e8f249a2d550b193, type: 3}
       propertyPath: hookMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
