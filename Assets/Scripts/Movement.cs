@@ -26,8 +26,9 @@ public class Movement : MonoBehaviour
     private bool checkpoint3Reached = false;
     private bool checkpoint4Reached = false;
     public Tutorial_GrapplingGun myGrapplingGun;
-    public int jumpCount = 0;
-    public int maxJumpCount = 2;
+    private int extraJumps;
+    public int extraJumpsValue;
+    private bool jumpRequest;
 
     Animator _animator;
 
@@ -39,36 +40,39 @@ public class Movement : MonoBehaviour
 
         myRenderer = GetComponent<SpriteRenderer>();
 
-        //blackOut.FadeOut(); //No funcional por ahora, revisar para la pre-alpha
+        extraJumps = extraJumpsValue;
     }
 
-    //Se va a encargar de leer los inputs y calcular la velocidad
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (isGrounded == true)
+        {
+            extraJumps = extraJumpsValue;
+        }
 
-        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (velocity[1] < 0)
         {
             rb.gravityScale = fallMultiplier;
         }
-
         else
         {
             rb.gravityScale = normalMultiplier;
         }
 
-        if (isGrounded && Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+            if (isGrounded || extraJumps > 0)
+            {
+                jumpRequest = true;
+                extraJumps--;
+            }
         }
 
         _animator.SetFloat("speedX", Mathf.Abs(velocity.x));
         _animator.SetFloat("speedY", rb.velocity.y);
         _animator.SetBool("isJumping", !isGrounded);
-
-        //_animator.setfloat("jump", direction.y * movementSpeed);
 
         if (rb.velocity.x < 0)
         {
@@ -80,29 +84,27 @@ public class Movement : MonoBehaviour
         }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
-
     }
 
-    //Se va a encargar de mover el player
     void FixedUpdate()
     {
         Collider2D collider = Physics2D.OverlapCircle(groundCheckPosition, groundCheckRadius, floorMask);
 
-        if (collider)
-        {
-            hitObject = collider.gameObject;
-        }
-        else
-        {
-            hitObject = null;
-        }
-        if (hitObject != null)
+        if (collider != null)
         {
             isGrounded = true;
         }
         else
         {
             isGrounded = false;
+        }
+
+        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+        if (jumpRequest)
+        {
+            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+            jumpRequest = false;
         }
 
         if (!myGrapplingGun.grappleRope.isGrappling)
@@ -127,9 +129,8 @@ public class Movement : MonoBehaviour
         {
             checkpoint4Reached = true;
         }
-
-
     }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
@@ -147,7 +148,7 @@ public class Movement : MonoBehaviour
         {
             transform.position = new Vector2(19f, 9.5f);
         }
-        
+
         else if (checkpoint2Reached == true && checkpoint3Reached == false)
         {
             transform.position = new Vector2(70f, 17.5f);
