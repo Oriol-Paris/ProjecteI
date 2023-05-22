@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     private bool checkpoint4Reached = false;
     public Tutorial_GrapplingGun myGrapplingGun;
     public int jumpCount = 0;
-    public int maxJumpCount = 2;
+    public int maxJumpsCount = 2;
 
     Animator _animator;
 
