@@ -8,6 +8,10 @@ public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    // Agrega aquí las referencias al AudioSource y al AudioClip.
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+
     public float movementSpeed = -1f;
     public float jumpSpeed = 8f;
     public Vector2 direction;
@@ -67,6 +71,8 @@ public class Movement : MonoBehaviour
             {
                 jumpRequest = true;
                 extraJumps--;
+
+                audioSource.PlayOneShot(jumpSound);
             }
         }
 
