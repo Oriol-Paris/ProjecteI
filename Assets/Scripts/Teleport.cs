@@ -5,7 +5,7 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
    
-    private Transform destination;
+    public Transform destination;
 
     public bool isTeleport;
    

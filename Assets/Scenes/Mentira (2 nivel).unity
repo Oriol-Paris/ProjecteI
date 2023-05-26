@@ -2596,6 +2596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a78b4b1303c26458d911538d6e40e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destination: {fileID: 1691324850}
   isTeleport: 1
 --- !u!212 &895412533
 SpriteRenderer:
