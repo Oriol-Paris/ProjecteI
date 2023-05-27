@@ -55,11 +55,17 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     }
 
+    //sonido
+    public AudioSource audioSource;
+    public AudioClip fireSound;
+    public AudioClip hookSound;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();
+            audioSource.PlayOneShot(fireSound);
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -88,6 +94,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
             m_rigidbody.gravityScale = 1;
+            audioSource.PlayOneShot(hookSound);
         }
         else
         {
