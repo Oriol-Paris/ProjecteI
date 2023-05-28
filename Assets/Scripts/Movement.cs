@@ -8,10 +8,6 @@ public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    // Agrega aquí las referencias al AudioSource y al AudioClip.
-    public AudioSource audioSource;
-    public AudioClip jumpSound;
-
     public float movementSpeed = -1f;
     public float jumpSpeed = 8f;
     public Vector2 direction;
@@ -33,23 +29,22 @@ public class Movement : MonoBehaviour
     private int extraJumps;
     public int extraJumpsValue;
     private bool jumpRequest;
-    public float dashSpeed = 20f;
-    public float dashTime = 0.2f;
-    private bool isDashing = false;
-    private float dashTimeLeft = 0f;
-    private Vector2 dashDirection;
 
+    public float dashSpeed = 50f;
+    public float dashTime = 0.1f;
+    public float dashCooldown = 5f;
+    private Vector2 dashDirection;
+    private bool isDashing = false;
+    private float dashTimeLeft;
+    private bool isDashOnCooldown = false;
 
     Animator _animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         _animator = GetComponentInChildren<Animator>();
-
         myRenderer = GetComponent<SpriteRenderer>();
-
         extraJumps = extraJumpsValue;
     }
 
@@ -77,9 +72,15 @@ public class Movement : MonoBehaviour
             {
                 jumpRequest = true;
                 extraJumps--;
-
-                audioSource.PlayOneShot(jumpSound);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !isDashOnCooldown && !myGrapplingGun.grappleRope.isGrappling && isGrounded)
+        {
+            isDashing = true;
+            dashTimeLeft = dashTime;
+            dashDirection = direction;
+            StartCoroutine(DashCooldown());
         }
 
         _animator.SetFloat("speedX", Mathf.Abs(velocity.x));
@@ -96,16 +97,7 @@ public class Movement : MonoBehaviour
         }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
-
-        if (Input.GetKeyDown(KeyCode.E) && !isDashing)
-        {
-            isDashing = true;
-            dashTimeLeft = dashTime;
-            dashDirection = direction;
-        }
-
     }
-
 
     void FixedUpdate()
     {
@@ -120,17 +112,33 @@ public class Movement : MonoBehaviour
             isGrounded = false;
         }
 
-        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
-
-        if (jumpRequest)
+        if (isDashing)
         {
-            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
-            jumpRequest = false;
+            if (dashTimeLeft <= 0)
+            {
+                isDashing = false;
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.velocity = new Vector2(dashDirection.x * dashSpeed, dashDirection.y * dashSpeed);
+                dashTimeLeft -= Time.fixedDeltaTime;
+            }
         }
-
-        if (!myGrapplingGun.grappleRope.isGrappling)
+        else
         {
-            rb.velocity = velocity;
+            velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+            if (jumpRequest)
+            {
+                velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+                jumpRequest = false;
+            }
+
+            if (!myGrapplingGun.grappleRope.isGrappling)
+            {
+                rb.velocity = velocity;
+            }
         }
 
         if (rb.position.x < 20 && rb.position.y > 9)
@@ -150,23 +158,13 @@ public class Movement : MonoBehaviour
         {
             checkpoint4Reached = true;
         }
-        if (isDashing)
-        {
-            if (dashTimeLeft > 0)
-            {
-                rb.velocity = dashDirection * dashSpeed;
-                dashTimeLeft -= Time.deltaTime;
-            }
-            else
-            {
-                isDashing = false;
-            }
-        }
-        if (!myGrapplingGun.grappleRope.isGrappling && !isDashing)
-        {
-            rb.velocity = velocity;
-        }
+    }
 
+    IEnumerator DashCooldown()
+    {
+        isDashOnCooldown = true;
+        yield return new WaitForSeconds(dashCooldown);
+        isDashOnCooldown = false;
     }
 
     void OnDrawGizmos()
