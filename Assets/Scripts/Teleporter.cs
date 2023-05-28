@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class Teleporter : MonoBehaviour
 {
-
     Transform player;
     [SerializeField] Transform destination;
+
+   
+    public AudioSource audioSource;
+    public AudioClip teleportSound;
+    
 
     private void Start()
     {
@@ -23,9 +25,11 @@ public class Teleporter : MonoBehaviour
         if (collision.gameObject == player.gameObject)
         {
             player.position = destination.position;
+
+            audioSource.PlayOneShot(teleportSound);
         }
     }
-
 }
-    
+
+
 
