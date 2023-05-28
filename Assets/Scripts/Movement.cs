@@ -30,21 +30,21 @@ public class Movement : MonoBehaviour
     public int extraJumpsValue;
     private bool jumpRequest;
 
-    public float dashSpeed = 50f;
-    public float dashTime = 0.1f;
-    public float dashCooldown = 5f;
-    private Vector2 dashDirection;
-    private bool isDashing = false;
-    private float dashTimeLeft;
-    private bool isDashOnCooldown = false;
+    public float dashSpeed = 20f;
+    private bool isDashing;
+    private bool canDash = true;
+    private float dashTimer;
 
     Animator _animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         _animator = GetComponentInChildren<Animator>();
+
         myRenderer = GetComponent<SpriteRenderer>();
+
         extraJumps = extraJumpsValue;
     }
 
@@ -75,12 +75,13 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isDashOnCooldown && !myGrapplingGun.grappleRope.isGrappling && isGrounded)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            isDashing = true;
-            dashTimeLeft = dashTime;
-            dashDirection = direction;
-            StartCoroutine(DashCooldown());
+            if (!myGrapplingGun.grappleRope.isGrappling && canDash)
+            {
+                isDashing = true;
+                canDash = false;
+            }
         }
 
         _animator.SetFloat("speedX", Mathf.Abs(velocity.x));
@@ -106,40 +107,42 @@ public class Movement : MonoBehaviour
         if (collider != null)
         {
             isGrounded = true;
+            if (!isDashing)
+            {
+                canDash = true;
+            }
         }
         else
         {
             isGrounded = false;
         }
 
+        velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
+
+        if (jumpRequest)
+        {
+            velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
+            jumpRequest = false;
+        }
+
         if (isDashing)
         {
-            if (dashTimeLeft <= 0)
+            rb.velocity = new Vector2(direction.x * dashSpeed, rb.velocity.y);
+            dashTimer += Time.fixedDeltaTime;
+            if (dashTimer > 0.1f)
             {
                 isDashing = false;
-                rb.velocity = Vector2.zero;
-            }
-            else
-            {
-                rb.velocity = new Vector2(dashDirection.x * dashSpeed, dashDirection.y * dashSpeed);
-                dashTimeLeft -= Time.fixedDeltaTime;
+                dashTimer = 0f;
             }
         }
-        else
+
+        if (!myGrapplingGun.grappleRope.isGrappling && !isDashing)
         {
-            velocity = new Vector2(direction.x * movementSpeed, rb.velocity.y);
-
-            if (jumpRequest)
-            {
-                velocity = new Vector2(direction.x * movementSpeed, jumpSpeed);
-                jumpRequest = false;
-            }
-
-            if (!myGrapplingGun.grappleRope.isGrappling)
-            {
-                rb.velocity = velocity;
-            }
+            rb.velocity = velocity;
         }
+        {
+        
+    }
 
         if (rb.position.x < 20 && rb.position.y > 9)
         {
@@ -158,13 +161,7 @@ public class Movement : MonoBehaviour
         {
             checkpoint4Reached = true;
         }
-    }
 
-    IEnumerator DashCooldown()
-    {
-        isDashOnCooldown = true;
-        yield return new WaitForSeconds(dashCooldown);
-        isDashOnCooldown = false;
     }
 
     void OnDrawGizmos()
