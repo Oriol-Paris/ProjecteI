@@ -33,6 +33,12 @@ public class Movement : MonoBehaviour
     private int extraJumps;
     public int extraJumpsValue;
     private bool jumpRequest;
+    public float dashSpeed = 20f;
+    public float dashTime = 0.2f;
+    private bool isDashing = false;
+    private float dashTimeLeft = 0f;
+    private Vector2 dashDirection;
+
 
     Animator _animator;
 
@@ -90,7 +96,16 @@ public class Movement : MonoBehaviour
         }
 
         groundCheckPosition = new Vector2(transform.position.x, transform.position.y - 0.6f);
+
+        if (Input.GetKeyDown(KeyCode.E) && !isDashing)
+        {
+            isDashing = true;
+            dashTimeLeft = dashTime;
+            dashDirection = direction;
+        }
+
     }
+
 
     void FixedUpdate()
     {
@@ -135,6 +150,23 @@ public class Movement : MonoBehaviour
         {
             checkpoint4Reached = true;
         }
+        if (isDashing)
+        {
+            if (dashTimeLeft > 0)
+            {
+                rb.velocity = dashDirection * dashSpeed;
+                dashTimeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                isDashing = false;
+            }
+        }
+        if (!myGrapplingGun.grappleRope.isGrappling && !isDashing)
+        {
+            rb.velocity = velocity;
+        }
+
     }
 
     void OnDrawGizmos()
