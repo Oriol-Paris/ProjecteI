@@ -35,6 +35,14 @@ public class Movement : MonoBehaviour
     private bool canDash = true;
     private float dashTimer;
 
+
+  
+  
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip dashSound;
+
+
     Animator _animator;
 
     void Start()
@@ -72,6 +80,7 @@ public class Movement : MonoBehaviour
             {
                 jumpRequest = true;
                 extraJumps--;
+                audioSource.PlayOneShot(jumpSound);
             }
         }
 
@@ -81,6 +90,7 @@ public class Movement : MonoBehaviour
             {
                 isDashing = true;
                 canDash = false;
+                audioSource.PlayOneShot(dashSound);
             }
         }
 
