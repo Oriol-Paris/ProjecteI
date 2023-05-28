@@ -26,8 +26,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [Range(0, 60)] [SerializeField] private float rotationSpeed = 4;
 
     [Header("Distance:")]
-    [SerializeField] private bool hasMaxDistance = false;
-    [SerializeField] private float maxDistnace = 20;
+    [SerializeField] private bool hasMaxDistance = true;
+    [SerializeField] private float maxDistnace = 4;
 
     private enum LaunchType
     {
@@ -55,11 +55,17 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     }
 
+    //sonido
+    public AudioSource audioSource;
+    public AudioClip fireSound;
+    public AudioClip hookSound;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();
+            audioSource.PlayOneShot(fireSound);
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -88,10 +94,11 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
             m_rigidbody.gravityScale = 1;
+            audioSource.PlayOneShot(hookSound);
         }
         else
         {
-            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos =  m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
     }
@@ -107,7 +114,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         }
         else
         {
-            gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            gunPivot.rotation =  Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
@@ -121,7 +128,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
-                    grapplePoint = _hit.point;
+                    grapplePoint =  _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     grappleRope.enabled = true;
                 }
@@ -134,7 +141,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         m_springJoint2D.autoConfigureDistance = false;
         if (!launchToPoint && !autoConfigureDistance)
         {
-            m_springJoint2D.distance = targetDistance;
+            m_springJoint2D.distance =  targetDistance;
             m_springJoint2D.frequency = targetFrequncy;
         }
         if (!launchToPoint)

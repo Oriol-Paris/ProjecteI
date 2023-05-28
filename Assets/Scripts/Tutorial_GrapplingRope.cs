@@ -17,13 +17,18 @@ public class Tutorial_GrapplingRope : MonoBehaviour
 
     [Header("Rope Progression:")]
     public AnimationCurve ropeProgressionCurve;
-    [SerializeField] [Range(1, 50)] private float ropeProgressionSpeed = 1;
+    [SerializeField] [Range(1,50)] private float ropeProgressionSpeed = 1;
 
     float moveTime = 0;
 
     [HideInInspector] public bool isGrappling = true;
 
     bool strightLine = true;
+
+    void Start()
+    {
+        isGrappling = false;
+    }
 
     private void OnEnable()
     {

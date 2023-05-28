@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Miasma
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 1877360469, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: -1388898689, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: 1269726759, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: -1351887919, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: 669657760, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: 736707432, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: 542114666, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  - {fileID: 749994876, guid: 987d24953b734e64691edced8722d52b, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
